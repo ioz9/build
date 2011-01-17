@@ -28,6 +28,19 @@ $(foreach cf,$(PRODUCT_COPY_FILES), \
         $(eval unique_product_copy_files_destinations := $(filter-out $(_dest), \
             $(unique_product_copy_files_destinations)))))
 
+define set-product-variable
+$(shell echo Define: $(1) $(2))
+ifneq ($(strip $(1),))
+$(1)
+endif
+endef
+
+$(foreach cf,$(strip $(PRODUCT_SPECIFIC_DEFINES)), \
+  $(eval _define := $(call word-colon,1,$(cf))) \
+  $(eval _value := $(call word-colon,2,$(cf))) \
+  $(eval $(call set-product-variable,$(_define),$(_value))) \
+)
+
 # -----------------------------------------------------------------
 # docs/index.html
 gen := $(OUT_DOCS)/index.html
@@ -140,6 +153,7 @@ $(INSTALLED_BUILD_PROP_TARGET): $(BUILDINFO_SH) $(INTERNAL_BUILD_ID_MAKEFILE)
 			TARGET_BOARD_PLATFORM="$(TARGET_BOARD_PLATFORM)" \
 			TARGET_CPU_ABI="$(TARGET_CPU_ABI)" \
 			TARGET_CPU_ABI2="$(TARGET_CPU_ABI2)" \
+			$(PRODUCT_BUILD_PROP_OVERRIDES) \
 	        bash $(BUILDINFO_SH) > $@
 	$(hide) if [ -f $(TARGET_DEVICE_DIR)/system.prop ]; then \
 	          cat $(TARGET_DEVICE_DIR)/system.prop >> $@; \
