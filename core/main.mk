@@ -201,9 +201,6 @@ endif
 user_variant := $(filter userdebug user,$(TARGET_BUILD_VARIANT))
 enable_target_debugging := true
 ifneq (,$(user_variant))
-  # Target is secure in user builds.
-  ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=1
-
   tags_to_install := user
   ifeq ($(user_variant),userdebug)
     # Pick up some extra useful tools
@@ -225,36 +222,28 @@ ifneq (,$(user_variant))
   endif
   endif
 
-  # Disallow mock locations by default for user builds
-  ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=0
-
-else # !user_variant
-  # Turn on checkjni for non-user builds.
-  ADDITIONAL_BUILD_PROPERTIES += ro.kernel.android.checkjni=1
-  # Set device insecure for non-user builds.
+  # Turn off checkjni for user builds.
+  ADDITIONAL_BUILD_PROPERTIES += ro.kernel.android.checkjni=0
+  # Set device insecure for user builds.
   ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-  # Allow mock locations by default for non user builds
+  # Allow mock locations by default for user builds
   ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
-endif # !user_variant
 
-ifeq (true,$(strip $(enable_target_debugging)))
   # Target is more debuggable and adbd is on by default
   ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1 persist.service.adb.enable=1
   # Include the debugging/testing OTA keys in this build.
   INCLUDE_TEST_OTA_KEYS := true
-else # !enable_target_debugging
-  # Target is less debuggable and adbd is off by default
-  ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=0 persist.service.adb.enable=0
-endif # !enable_target_debugging
+
+  # Don't require the setup wizard on user builds
+  ADDITIONAL_BUILD_PROPERTIES := $(filter-out ro.setupwizard.mode=%,\
+          $(call collapse-pairs, $(ADDITIONAL_BUILD_PROPERTIES))) \
+          ro.setupwizard.mode=OPTIONAL
+endif
 
 ## eng ##
 
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 tags_to_install := user debug eng
-  # Don't require the setup wizard on eng builds
-  ADDITIONAL_BUILD_PROPERTIES := $(filter-out ro.setupwizard.mode=%,\
-          $(call collapse-pairs, $(ADDITIONAL_BUILD_PROPERTIES))) \
-          ro.setupwizard.mode=OPTIONAL
 endif
 
 ## tests ##
