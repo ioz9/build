@@ -60,8 +60,10 @@ GRANDFATHERED_USER_MODULES += \
 	bluetoothd \
 	bmgr \
 	bootanimation \
+	bravo-keypad.kcm \
 	brcm_patchram_plus \
 	bugreport \
+	busybox \
 	cfassembler \
 	check_stack \
 	check_trace \
@@ -121,6 +123,7 @@ GRANDFATHERED_USER_MODULES += \
 	fw_bcm4329_apsta.bin \
 	fw_bcm4329.bin \
 	genext2fs \
+	gps.bravo \
 	gps.mahimahi \
 	gralloc.default \
 	gralloc.qsd8k \
@@ -184,13 +187,16 @@ GRANDFATHERED_USER_MODULES += \
 	libbluetoothd \
 	libbuiltinplugin \
 	libbundlewrapper \
+	libbusybox \
 	libbz \
 	libc \
+	libc-ext \
 	libcamera_client \
 	libcameraservice \
 	libcamerastub \
 	libc_common \
 	libc_nomalloc \
+	libclearsilverregex \
 	libctest \
 	libcutils \
 	libdb \
@@ -443,6 +449,7 @@ GRANDFATHERED_USER_MODULES += \
 	sqlite3 \
 	stack_dump \
 	stringtemplate \
+	su \
 	surfaceflinger \
 	svc \
 	swing-worker-1.1 \
