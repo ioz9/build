@@ -23,13 +23,8 @@
 # on smaller devices.
 $(call inherit-product, frameworks/base/data/sounds/AudioPackage4.mk)
 
-ifeq (oxygen_bravo,$(TARGET_PRODUCT))
 $(call inherit-product-if-exists, external/svox/pico/lang/all_pico_languages.mk)
 $(call inherit-product, build/target/product/languages_full.mk)
-else
-$(call inherit-product-if-exists, external/svox/pico/lang/PicoLangEnGBInSystem.mk)
-PRODUCT_LOCALES := en_GB
-endif
 
 $(call inherit-product, build/target/product/generic.mk)
 

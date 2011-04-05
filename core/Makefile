@@ -1064,14 +1064,11 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(OTATOOLS)
            -k $(KEY_CERT_PAIR) \
            $(BUILT_TARGET_FILES_PACKAGE) $@
 
-.PHONY: otapackage devnull oxygen
+.PHONY: otapackage oxygen
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
-devnull: otapackage
-	$(hide) \
-           ./vendor/devnull/tools/squisher
 oxygen: otapackage
 	$(hide) \
-           ./vendor/devnull/tools/squisher_oxygen
+           ./vendor/oxygen/tools/squisher
 
 # -----------------------------------------------------------------
 # The update package
