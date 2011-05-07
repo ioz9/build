@@ -21,7 +21,7 @@
 
 # Pick up some sounds - stick with the short list to save space
 # on smaller devices.
-$(call inherit-product, frameworks/base/data/sounds/AudioPackage4.mk)
+$(call inherit-product, frameworks/base/data/sounds/AudioPackage5.mk)
 
 $(call inherit-product-if-exists, external/svox/pico/lang/all_pico_languages.mk)
 $(call inherit-product, build/target/product/languages_full.mk)
