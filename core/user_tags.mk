@@ -61,6 +61,7 @@ GRANDFATHERED_USER_MODULES += \
 	bmgr \
 	bootanimation \
 	bravo-keypad.kcm \
+	bravoc-keypad.kcm \
 	brcm_patchram_plus \
 	bugreport \
 	busybox \
@@ -124,6 +125,7 @@ GRANDFATHERED_USER_MODULES += \
 	fw_bcm4329.bin \
 	genext2fs \
 	gps.bravo \
+	gps.bravoc \
 	gps.mahimahi \
 	gralloc.default \
 	gralloc.qsd8k \
