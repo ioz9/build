@@ -129,9 +129,9 @@ ifdef product_goals
   # ("make PRODUCT-blah-user"), so this should only tend to happen when
   # using buildbot.
   # TODO: Remove this once host Dalvik preoptimization is working.
-  ifeq ($(TARGET_BUILD_VARIANT),user)
-    WITH_DEXPREOPT_buildbot := true
-  endif
+  #ifeq ($(TARGET_BUILD_VARIANT),user)
+    WITH_DEXPREOPT_buildbot := false
+  #endif
 
   # Replace the PRODUCT-* goal with the build goal that it refers to.
   # Note that this will ensure that it appears in the same relative

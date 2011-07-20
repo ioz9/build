@@ -126,9 +126,11 @@ GRANDFATHERED_USER_MODULES += \
 	genext2fs \
 	gps.bravo \
 	gps.bravoc \
+	gps.u8800 \
 	gps.mahimahi \
 	gralloc.default \
 	gralloc.qsd8k \
+	gralloc.msm7x30 \
 	groovy-all-1.7.0 \
 	grxmlcompile \
 	guava \
@@ -252,6 +254,7 @@ GRANDFATHERED_USER_MODULES += \
 	libmincrypt \
 	libminui \
 	libminzip \
+	libmm-omxcore \
 	libmtdutils \
 	libmusicbundle \
 	libneo_cgi \
@@ -260,6 +263,9 @@ GRANDFATHERED_USER_MODULES += \
 	libnetlink \
 	libnetutils \
 	libop \
+	libOmxCore \
+	libOmxVdec \
+	libOmxVenc \
 	libOpenSLES \
 	libopensles_helper \
 	libOpenSLESUT \
@@ -359,6 +365,7 @@ GRANDFATHERED_USER_MODULES += \
 	libzipfile \
 	lights.kraken \
 	lights.qsd8k \
+	lights.msm7x30 \
 	line_endings \
 	linker \
 	localize \
@@ -477,5 +484,7 @@ GRANDFATHERED_USER_MODULES += \
 	wpa_supplicant.conf \
 	xmlwriter \
 	yuv420sp2rgb \
-	zipalign
+	zipalign \
+	libloc_api-rpc-qc \
+	libloc_api_rpcgen \
 
